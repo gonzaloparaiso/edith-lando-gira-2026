@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gira 2026 · Taller Presencial · Edith Lando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700;1,900&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+
+<style>
+  /* ── Variables y reset escopados al wrapper ─────────────────── */
+  .el-murcia {
+    --burdeos:    #721124;
+    --burdeos-dk: #4a0b16;
+    --rojo:       #D40E2A;
+    --terracota:  #CC6A4C;
+    --beige:      #EFEAE6;
+    --dorado:     #DDB57C;
+    --negro:      #121212;
+    --blanco:     #ffffff;
+    font-family: 'Barlow', sans-serif;
+    color: var(--negro);
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .el-murcia *, .el-murcia *::before, .el-murcia *::after {
+    box-sizing: inherit;
+  }
+
+  /* ─── BANNER 2X1 ─────────────────────────────────────────────── */
+  .el-murcia .banner-2x1 {
+    background: var(--dorado);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .el-murcia .banner-2x1-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--burdeos-dk);
+    margin: 0;
+  }
+
+  .el-murcia .banner-2x1-text strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .el-murcia .banner-2x1 { flex-direction: column; text-align: center; gap: 14px; padding: 20px 24px; }
+  }
+
+  /* ─── BOTONES ────────────────────────────────────────────────── */
+  .el-murcia .btn-primary {
+    display: inline-block;
+    background: var(--rojo);
+    color: var(--blanco) !important;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 18px 44px;
+    text-decoration: none !important;
+    transition: background 0.25s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .el-murcia .btn-primary:hover {
+    background: #b50b22;
+    transform: translateY(-2px);
+  }
+
+  .el-murcia .btn-dark {
+    display: inline-block;
+    background: var(--burdeos-dk);
+    color: var(--blanco) !important;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    text-decoration: none !important;
+    transition: background 0.25s;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+  }
+
+  .el-murcia .btn-dark:hover { background: var(--burdeos); }
+
+  /* ─── HERO ──────────────────────────────────────────────────── */
+  .el-murcia .hero {
+    position: relative;
+    min-height: 100vh;
+    background: var(--burdeos-dk);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 72px;
+    overflow: hidden;
+  }
+
+  /* Para añadir foto: <div class="hero-bg" style="background-image:url('tu-foto.jpg')"></div> */
+  .el-murcia .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .el-murcia .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(74,11,22,0.72) 0%,
+      rgba(74,11,22,0.78) 50%,
+      rgba(74,11,22,0.88) 100%
+    );
+  }
+
+  .el-murcia .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .el-murcia .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .el-murcia .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(11px, 1.4vw, 14px);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin: 0 0 28px;
+    display: block;
+    animation: elmFadeDown 0.9s 0.1s ease both;
+  }
+
+  .el-murcia .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(26px, 5.2vw, 58px);
+    line-height: 1.08;
+    color: var(--blanco);
+    margin: 0 0 24px;
+    animation: elmFadeDown 0.9s 0.2s ease both;
+    letter-spacing: -0.01em;
+  }
+
+  .el-murcia .hero-subhead {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 2.2vw, 20px);
+    color: var(--dorado);
+    margin: 0 0 28px;
+    line-height: 1.5;
+    animation: elmFadeDown 0.9s 0.3s ease both;
+  }
+
+  .el-murcia .hero-body {
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.8;
+    color: rgba(255,255,255,0.78);
+    margin: 0 0 44px;
+    animation: elmFadeDown 0.9s 0.35s ease both;
+  }
+
+  .el-murcia .hero-cta {
+    animation: elmFadeDown 0.9s 0.5s ease both;
+  }
+
+  /* ─── UTILIDADES COMUNES ─────────────────────────────────────── */
+  .el-murcia .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--rojo);
+    margin: 0 0 14px;
+    display: block;
+  }
+
+  .el-murcia .section-title {
+    font-family: 'Trirong', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 50px);
+    color: var(--burdeos-dk);
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+
+  .el-murcia .section-subtitle {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #666;
+    margin: 0 0 52px;
+  }
+
+  /* ─── PROGRAMA ────────────────────────────────────────────────── */
+  .el-murcia .programa {
+    background: var(--beige);
+    padding: 88px 24px;
+  }
+
+  .el-murcia .programa-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .el-murcia .programa-blocks {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .el-murcia .programa-blocks::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rojo), var(--dorado), var(--rojo));
+    opacity: 0.2;
+  }
+
+  .el-murcia .programa-block {
+    display: flex;
+    gap: 32px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(114,17,36,0.1);
+  }
+
+  .el-murcia .programa-block:last-child { border-bottom: none; }
+
+  .el-murcia .programa-num {
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+    background: var(--burdeos);
+    color: var(--blanco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .el-murcia .programa-body {
+    flex: 1;
+    padding-top: 8px;
+  }
+
+  .el-murcia .programa-body h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--burdeos);
+    margin: 0 0 12px;
+  }
+
+  .el-murcia .programa-body p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+  }
+
+  .el-murcia .programa-pausa {
+    background: var(--burdeos);
+    padding: 32px 40px;
+    margin: 8px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .el-murcia .programa-pausa h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin: 0 0 10px;
+  }
+
+  .el-murcia .programa-pausa p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.78);
+    margin: 0;
+  }
+
+  @media (max-width: 580px) {
+    .el-murcia .programa-blocks::before { display: none; }
+    .el-murcia .programa-block { flex-direction: column; gap: 16px; padding: 32px 0; }
+    .el-murcia .programa-num { width: 44px; min-width: 44px; height: 44px; font-size: 18px; }
+    .el-murcia .programa-body { padding-top: 0; }
+  }
+
+  /* ─── MATERIALES ──────────────────────────────────────────────── */
+  .el-murcia .materiales {
+    background: var(--negro);
+    padding: 88px 24px;
+  }
+
+  .el-murcia .materiales-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .el-murcia .materiales .section-title { color: var(--blanco); }
+  .el-murcia .materiales .section-subtitle { color: rgba(255,255,255,0.55); max-width: 700px; margin: 0 auto 52px; }
+
+  .el-murcia .materiales-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin: 0 0 2px;
+  }
+
+  @media (max-width: 720px) {
+    .el-murcia .materiales-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 460px) {
+    .el-murcia .materiales-grid { grid-template-columns: 1fr; }
+  }
+
+  .el-murcia .material-card {
+    background: rgba(255,255,255,0.05);
+    padding: 32px 28px;
+    text-align: left;
+    transition: background 0.2s;
+  }
+
+  .el-murcia .material-card:hover { background: rgba(255,255,255,0.09); }
+
+  .el-murcia .material-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin: 0 0 10px;
+  }
+
+  .el-murcia .material-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+  }
+
+  .el-murcia .materiales-mockup {
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(221,181,124,0.25);
+    padding: 56px 24px;
+    color: rgba(221,181,124,0.4);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* ─── QUOTE BAND ──────────────────────────────────────────────── */
+  .el-murcia .quote-band {
+    background: var(--burdeos);
+    padding: 80px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .el-murcia .quote-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n3'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n3)' opacity='0.06'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .el-murcia .quote-band-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .el-murcia .quote-band-text {
+    font-family: 'Trirong', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(22px, 4vw, 38px);
+    color: var(--blanco);
+    line-height: 1.35;
+    margin: 0 0 40px;
+  }
+
+  /* ─── CIUDADES ────────────────────────────────────────────────── */
+  .el-murcia .ciudades {
+    background: var(--beige);
+    padding: 88px 24px;
+  }
+
+  .el-murcia .ciudades-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .el-murcia .ciudades-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .el-murcia .ciudades-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .el-murcia .ciudades-grid { grid-template-columns: 1fr; }
+  }
+
+  .el-murcia .ciudad-card {
+    background: var(--blanco);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .el-murcia .ciudad-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(114,17,36,0.14);
+  }
+
+  .el-murcia .ciudad-photo {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--burdeos-dk);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    overflow: hidden;
+  }
+
+  .el-murcia .ciudad-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .el-murcia .ciudad-info {
+    padding: 28px 28px 32px;
+  }
+
+  .el-murcia .ciudad-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--burdeos-dk);
+    margin: 0 0 4px;
+    display: block;
+  }
+
+  .el-murcia .ciudad-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    color: var(--rojo);
+    margin: 0 0 10px;
+    display: block;
+  }
+
+  .el-murcia .ciudad-venue {
+    font-size: 14px;
+    color: #999;
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+
+  .el-murcia .ciudad-cta {
+    display: block;
+    text-align: center;
+    background: var(--rojo);
+    color: var(--blanco) !important;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    text-decoration: none !important;
+    transition: background 0.25s;
+    margin: 0 0 12px;
+  }
+
+  .el-murcia .ciudad-cta:hover { background: #b50b22; }
+
+  .el-murcia .ciudad-2x1 {
+    font-size: 13px;
+    color: var(--burdeos);
+    text-align: center;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  /* ─── SOBRE EDITH ─────────────────────────────────────────────── */
+  .el-murcia .about {
+    background: var(--burdeos-dk);
+    padding: 88px 24px;
+  }
+
+  .el-murcia .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  @media (max-width: 780px) {
+    .el-murcia .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .el-murcia .about-greeting {
+    font-family: 'Trirong', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(32px, 4.5vw, 50px);
+    color: var(--blanco);
+    margin: 0 0 6px;
+    line-height: 1.1;
+  }
+
+  .el-murcia .about-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin: 0 0 32px;
+    display: block;
+  }
+
+  .el-murcia .about-body {
+    font-size: 16px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.75);
+    margin: 0 0 18px;
+  }
+
+  .el-murcia .about-body strong { color: var(--blanco); font-weight: 600; }
+  .el-murcia .about-body em { color: var(--dorado); font-style: italic; }
+
+  .el-murcia .about-mission {
+    font-family: 'Trirong', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(18px, 2.5vw, 22px);
+    color: var(--dorado);
+    line-height: 1.4;
+    margin: 28px 0 40px;
+    padding-left: 20px;
+    border-left: 3px solid var(--dorado);
+  }
+
+  .el-murcia .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(221,181,124,0.35);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .el-murcia .about-photo::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--dorado);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .el-murcia .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── CTA FINAL ───────────────────────────────────────────────── */
+  .el-murcia .cta-final {
+    background: var(--negro);
+    padding: 88px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .el-murcia .cta-final::before {
+    content: '';
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,14,42,0.12) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .el-murcia .cta-final-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .el-murcia .cta-final-text {
+    font-family: 'Trirong', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(26px, 4.5vw, 44px);
+    color: var(--blanco);
+    line-height: 1.2;
+    margin: 0 0 40px;
+  }
+
+  /* ─── SCROLL REVEAL ──────────────────────────────────────────── */
+  .el-murcia .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .el-murcia .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── ANIMACIONES ────────────────────────────────────────────── */
+  @keyframes elmFadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<!-- ══ WRAPPER PRINCIPAL ════════════════════════════════════════════ -->
+<div class="el-murcia">
+
+  <!-- BANNER 2X1 -->
+  <div class="banner-2x1">
+    <p class="banner-2x1-text">
+      ¿Conoces a otra madre que necesite este día tanto como tú?
+      Trae a una amiga y vive esta experiencia acompañada.
+      <strong>¡Entradas 2X1!</strong>
+    </p>
+    <a href="#ciudades" class="btn-dark">Comprar entrada &rsaquo;</a>
+  </div>
+
+  <!-- HERO -->
+  <!-- Para añadir la foto de Edith: añade style="background-image:url('ruta/foto-edith-evento.jpg')" al div.hero-bg -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <svg xmlns="http://www.w3.org/2000/svg" width="163" height="57" viewBox="0 0 163 57" fill="none" style="width:160px;height:auto;margin:0 auto 36px;display:block;opacity:0.9;"><path d="M52.2826 20.7917V16.6603H66.2684V12.9169H52.2826V4.0153H67.9353V0H48.1181C47.6555 0 47.2802 0.375364 47.2802 0.83795V23.9805C47.2802 24.4371 47.6501 24.807 48.1073 24.807H68.0033V20.7917H52.2826Z" fill="white"/><path d="M70.0695 24.807V0H81.7069C84.5197 0 86.891 0.516125 88.8195 1.54837C90.7475 2.58062 92.205 4.02673 93.1916 5.8867C94.1787 7.74727 94.6726 9.92485 94.6726 12.4207C94.6726 14.3943 94.3712 16.1526 93.7702 17.695C93.1693 19.2379 92.3013 20.5367 91.168 21.5912C90.0329 22.6457 88.6716 23.4463 87.0841 23.9907C85.496 24.5351 83.704 24.807 81.7075 24.807H70.0701H70.0695ZM75.0376 20.8597H80.7884C82.2862 20.8597 83.5903 20.6672 84.702 20.281C85.8136 19.8954 86.7274 19.3282 87.4414 18.5798C88.1566 17.8315 88.695 16.9298 89.0584 15.8747C89.4205 14.8196 89.6028 13.6346 89.6028 12.319C89.6028 10.3676 89.234 8.77952 88.4965 7.55477C87.759 6.32943 86.7334 5.41689 85.4172 4.81535C84.101 4.21441 82.5593 3.91364 80.789 3.91364H75.0382V20.8597H75.0376Z" fill="white"/><path d="M101.44 0H96.4375V24.807H101.44V0Z" fill="white"/><path d="M123.146 0H100.925V4.04959H109.501V24.807H114.503V4.04959H123.146V0Z" fill="white"/><path d="M144.534 0V13.0324H129.766V0H124.764V24.807H129.766V17.014H144.534V24.807H148.675C149.151 24.807 149.537 24.4214 149.537 23.9456V0.852387C149.537 0.381379 149.155 0.00060213 148.685 0.00060213H144.534V0Z" fill="white"/><path d="M77.3908 31.5596H70.89L61.767 52.2153H52.2818V31.5596H47.2794V55.4913C47.2794 55.9744 47.6716 56.3666 48.1553 56.3666H65.3431L68.7076 48.2199H79.5624L82.9365 56.3666H87.6742C87.9912 56.3666 88.2024 56.0418 88.0748 55.7524L77.3896 31.5596H77.3908ZM70.2962 44.3748L72.6934 38.57L74.0553 35.2344H74.2255L75.5531 38.5351L77.9707 44.3742H70.2962V44.3748Z" fill="white"/><path d="M132.701 37.4465C131.715 35.5865 130.257 34.1404 128.329 33.1082C126.401 32.0753 124.03 31.5592 121.217 31.5592H109.577V42.1427L109.579 42.2654V49.9351H109.509L95.7271 31.5586H90.4341C89.9745 31.5586 89.6016 31.9315 89.6016 32.3905V55.5102C89.6016 55.983 89.9847 56.3662 90.457 56.3662H94.6377V45.613L94.4674 38.1268H94.7057L108.121 55.8808C108.352 56.1864 108.713 56.3662 109.096 56.3662H121.216C123.213 56.3662 125.005 56.0943 126.593 55.5493C128.181 55.0049 129.542 54.2055 130.677 53.151C131.811 52.0959 132.678 50.7971 133.28 49.2542C133.881 47.7118 134.182 45.9541 134.182 43.9798C134.182 41.4852 133.688 39.3071 132.701 37.4465M128.567 47.4333C128.204 48.4884 127.665 49.3901 126.95 50.139C126.236 50.888 125.322 51.4552 124.211 51.8402C123.099 52.2258 121.795 52.4183 120.297 52.4183H114.546V35.4716H120.297C122.067 35.4716 123.61 35.773 124.925 36.3739C126.242 36.9749 127.267 37.8874 128.005 39.1128C128.742 40.3375 129.111 41.9256 129.111 43.877C129.111 45.1932 128.929 46.3782 128.566 47.4327" fill="white"/><path d="M149.252 56.3667C147.096 56.3667 145.169 56.0659 143.467 55.4649C141.766 54.864 140.313 54.002 139.112 52.8789C137.908 51.7552 136.996 50.418 136.372 48.863C135.748 47.3098 135.436 45.5678 135.436 43.6398C135.436 41.7119 135.754 39.9987 136.389 38.4329C137.024 36.8676 137.937 35.5304 139.128 34.4176C140.319 33.3059 141.766 32.4499 143.467 31.849C145.169 31.248 147.096 30.9473 149.252 30.9473C151.408 30.9473 153.33 31.248 155.02 31.849C156.709 32.4499 158.151 33.3119 159.342 34.435C160.533 35.5581 161.44 36.8965 162.064 38.4509C162.688 40.0047 163 41.7341 163 43.6398C163 45.5455 162.688 47.3146 162.064 48.8805C161.44 50.4457 160.527 51.7835 159.325 52.8952C158.123 54.0074 156.676 54.8634 154.986 55.4643C153.297 56.0653 151.385 56.366 149.253 56.366M149.253 52.3508C151.045 52.3508 152.587 52.0103 153.881 51.3299C155.173 50.6496 156.171 49.6625 156.875 48.3691C157.578 47.0764 157.93 45.4998 157.93 43.6392C157.93 42.2551 157.732 41.0255 157.335 39.9469C156.938 38.8702 156.359 37.9619 155.599 37.2244C154.839 36.4869 153.92 35.9262 152.842 35.5394C151.765 35.1545 150.567 34.9614 149.253 34.9614C147.483 34.9614 145.94 35.2958 144.625 35.9653C143.309 36.6349 142.294 37.616 141.579 38.9087C140.864 40.202 140.507 41.7786 140.507 43.6392C140.507 45.0456 140.716 46.2878 141.137 47.3652C141.556 48.4425 142.146 49.3509 142.907 50.0877C143.666 50.8252 144.579 51.3865 145.646 51.7721C146.711 52.1583 147.913 52.3508 149.253 52.3508Z" fill="white"/><path d="M25.5577 19.6815C25.2149 19.6815 24.866 19.7025 24.5159 19.744C24.8377 17.8137 24.2187 15.8611 22.8352 14.4781L17.174 8.81641L11.7 14.2904C10.2683 15.7227 9.61867 17.7463 9.93688 19.7446C4.58135 19.1088 0 23.3286 0 28.5765C0 31.4525 1.39859 34.1558 3.74521 35.8239V41.5139H11.2079C11.3812 41.7352 11.5388 41.9151 11.7 42.0769L17.174 47.5503L22.8352 41.8892C22.9525 41.7719 23.065 41.6486 23.1786 41.5139H30.7124V35.8185C33.0548 34.1498 34.451 31.4488 34.451 28.5759C34.451 23.6715 30.4609 19.6815 25.5577 19.6815ZM24.4088 27.4678H18.3843L22.8358 23.0164C23.4295 22.4227 23.8855 21.7207 24.1898 20.9291C24.6518 20.8461 25.112 20.8039 25.5577 20.8039C29.8431 20.8039 33.3291 24.2899 33.3291 28.5753C33.3291 30.8118 32.3798 32.91 30.7124 34.3856V33.772C30.7124 30.2957 27.8851 27.4678 24.4088 27.4678ZM17.174 10.4027L22.0417 15.2716C23.2653 16.4945 23.7507 18.2859 23.323 19.9672C20.5276 20.6939 18.2352 22.771 17.2252 25.4653C16.2152 22.7716 13.9245 20.6945 11.1285 19.9672C10.7069 18.2149 11.2242 16.3513 12.4934 15.0827L17.1734 10.4027H17.174ZM18.2195 26.0452C18.9618 23.9061 20.6317 22.1616 22.7413 21.3357C22.5422 21.6587 22.3082 21.9565 22.0417 22.223L18.2195 26.0452ZM17.2252 30.0647C18.2658 31.4176 19.2818 33.212 18.8902 34.0619C18.7086 34.459 18.1479 34.6599 17.2252 34.6599C16.5911 34.6599 15.7869 34.5564 15.5601 34.0626C15.1697 33.2144 16.1851 31.4194 17.2252 30.0647ZM16.2862 26.2034L12.494 22.4107C12.1716 22.0882 11.8937 21.7219 11.6645 21.3171C13.8571 22.158 15.5679 23.9717 16.2868 26.2034M4.86768 33.7714C4.86768 30.9141 7.19265 28.5897 10.05 28.5897H16.2705L11.7 33.1602C9.80334 35.0569 9.32812 37.9918 10.4999 40.3896H4.86708V33.7708L4.86768 33.7714ZM12.494 33.9537L15.213 31.2341C14.5988 32.3566 14.2 33.5783 14.6205 34.4945C14.9315 35.1712 15.6173 35.5652 16.6627 35.6657C16.5617 38.2758 14.4057 40.3751 11.7794 40.3902C10.4909 38.3552 10.7851 35.6627 12.494 33.9537ZM17.2288 38.0002C18.0679 39.8223 19.7348 41.1 21.7079 41.4278L17.174 45.9611L12.6547 41.4417C14.6428 41.1391 16.3794 39.8307 17.2288 37.9996M19.8305 34.4933C20.2269 33.6312 19.8858 32.4895 19.3504 31.4488L22.0417 34.1408C23.7212 35.8197 23.9576 38.434 22.6198 40.3884C20.0199 40.3427 17.8959 38.2547 17.7948 35.6639C18.8361 35.5628 19.5201 35.1688 19.8311 34.4933M22.8358 33.3467L18.0782 28.5891H24.4094C27.2667 28.5891 29.5911 30.9135 29.5911 33.7708V40.3896H23.9234C25.1264 38.0664 24.6975 35.2085 22.8364 33.3473M10.0506 27.4666C6.57426 27.4666 3.74641 30.2945 3.74641 33.7708V34.391C2.07472 32.9154 1.12368 30.8148 1.12368 28.5741C1.12368 24.2887 4.60962 20.8027 8.89501 20.8027C9.33594 20.8027 9.79191 20.8443 10.2521 20.9261C10.5697 21.7929 11.057 22.558 11.7012 23.2035L15.9643 27.466H10.0506V27.4666Z" fill="white"/></svg>
+      <span class="hero-eyebrow">Gira 2026</span>
+      <h1 class="hero-title">¿Cómo poner límites y motivar a tu adolescente cuando sientes que lo has intentado todo y nada cambia?</h1>
+      <p class="hero-subhead">Deja de buscar respuestas rápidas y descubre qué necesita realmente tu hijo en esta etapa.</p>
+      <p class="hero-body">
+        Porque cuando entiendes qué necesita realmente tu adolescente… empiezan a cambiar muchas más cosas que las discusiones.<br><br>
+        Un evento presencial diseñado para ayudarte a sostener límites, motivación y conexión sin vivir esta etapa desde el agotamiento constante.
+      </p>
+      <div class="hero-cta">
+        <a href="#ciudades" class="btn-primary">Comprar entrada &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMA DEL DÍA -->
+  <section class="programa">
+    <div class="programa-inner">
+      <span class="section-label reveal">El programa</span>
+      <h2 class="section-title reveal">¿Qué vas a vivir este día?</h2>
+      <p class="section-subtitle reveal">9 horas. 4 bloques. Una experiencia diseñada para que salgas siendo una madre diferente a la que entró.</p>
+
+      <div class="programa-blocks">
+
+        <div class="programa-block reveal">
+          <div class="programa-num">1</div>
+          <div class="programa-body">
+            <h3>El punto de partida</h3>
+            <p>Empiezas reconociéndote. Las frases que te dices por dentro cuando nada funciona. Los patrones que repites sin querer. Por qué oscilan entre la firmeza y la rendición… y por qué ninguna de las dos funciona sola.</p>
+          </div>
+        </div>
+
+        <div class="programa-block reveal">
+          <div class="programa-num">2</div>
+          <div class="programa-body">
+            <h3>Los límites que sostienen</h3>
+            <p>Los 5 pasos de la metodología <strong>LSB — Límites Sin Broncas</strong>. Validada con más de 10 años y miles de familias. No es teoría. Es el sistema que cambia cómo pones límites para siempre.</p>
+          </div>
+        </div>
+
+        <div class="programa-pausa reveal">
+          <h3>90 minutos de pausa que también forman parte de tu transformación</h3>
+          <p>Tendrás tiempo para comer, respirar y compartir con otras madres que están viviendo exactamente lo mismo que tú. Porque a veces, lo que más transforma no está solo en el contenido. Está en dejar de sentirte sola en esta etapa.</p>
+        </div>
+
+        <div class="programa-block reveal">
+          <div class="programa-num">3</div>
+          <div class="programa-body">
+            <h3>Por qué tu hijo ya no responde a "esfuérzate"</h3>
+            <p>Los 6 Activadores Motivacionales. Qué mueve realmente a tu adolescente, cómo hablarle en su código y por qué cambiar la forma en que le hablas cambia todo lo demás.</p>
+          </div>
+        </div>
+
+        <div class="programa-block reveal">
+          <div class="programa-num">4</div>
+          <div class="programa-body">
+            <h3>El click</h3>
+            <p>Límites y motivación no son dos cosas separadas. Son la misma. Cuando las dos encajan, todo cambia. Este es el momento en que lo sientes.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TODO LO QUE RECIBIRÁS -->
+  <section class="materiales">
+    <div class="materiales-inner">
+      <span class="section-label reveal" style="color:var(--dorado)">Incluido con tu entrada</span>
+      <h2 class="section-title reveal">Todo lo que recibirás durante esta experiencia</h2>
+      <p class="section-subtitle reveal">Porque la transformación no termina cuando sales de la sala. Por eso recibirás herramientas y materiales prácticos para empezar a aplicarlo desde el lunes.</p>
+
+      <div class="materiales-grid">
+        <div class="material-card reveal">
+          <h3>Cuaderno de trabajo del evento</h3>
+          <p>Tu espacio personal para anotar y trabajar durante el día.</p>
+        </div>
+        <div class="material-card reveal">
+          <h3>Mis 4 errores invisibles</h3>
+          <p>Autodiagnóstico de cómo estás poniendo límites ahora mismo.</p>
+        </div>
+        <div class="material-card reveal">
+          <h3>Cuadrante de demandas</h3>
+          <p>Descubre qué mueve realmente a tu adolescente.</p>
+        </div>
+        <div class="material-card reveal">
+          <h3>Mi acuerdo del lunes</h3>
+          <p>Un compromiso concreto para aplicar desde el día siguiente.</p>
+        </div>
+        <div class="material-card reveal">
+          <h3>Audio personal de Edith</h3>
+          <p>Para ayudarte a integrar todo lo que viviste ese día.</p>
+        </div>
+        <div class="material-card reveal">
+          <h3>Guía resumen del evento</h3>
+          <p>Todo lo trabajado, sintetizado para consultarlo cuando lo necesites.</p>
+        </div>
+      </div>
+
+      <!-- Sustituir por mockups reales de los materiales -->
+      <div class="materiales-mockup reveal">
+        Mockups de materiales y descargables del evento
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE DE TRANSICIÓN -->
+  <section class="quote-band">
+    <div class="quote-band-inner">
+      <p class="quote-band-text reveal">
+        Querida madre, este no es solo un evento presencial.<br>
+        Es una oportunidad para empezar a vivir la adolescencia de tu hijo de otra manera.
+      </p>
+      <div class="reveal">
+        <a href="#ciudades" class="btn-primary">Comprar entrada &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELIGE CIUDAD -->
+  <section class="ciudades" id="ciudades">
+    <div class="ciudades-inner">
+      <span class="section-label reveal">Gira 2026</span>
+      <h2 class="section-title reveal">Elige dónde prefieres vivir esta experiencia</h2>
+
+      <div class="ciudades-grid" style="margin-top:48px">
+
+        <!-- MURCIA -->
+        <div class="ciudad-card reveal">
+          <!-- Sustituir contenido del div por <img src="foto-sala-murcia.jpg" alt="Sala Murcia"> -->
+          <div class="ciudad-photo">Foto sala · Murcia</div>
+          <div class="ciudad-info">
+            <span class="ciudad-name">Murcia</span>
+            <span class="ciudad-date">XX.XX.2026</span>
+            <p class="ciudad-venue">Lugar en el que se va a realizar el evento</p>
+            <a href="https://taller.edithlando.es/entrada-evento-presencial-motivacion-limites-murcia" class="ciudad-cta">Comprar entrada &rsaquo;</a>
+            <p class="ciudad-2x1">¡Vente con una amiga! Entrada 2x1</p>
+          </div>
+        </div>
+
+        <!-- MADRID -->
+        <div class="ciudad-card reveal">
+          <!-- Sustituir contenido del div por <img src="foto-sala-madrid.jpg" alt="Sala Madrid"> -->
+          <div class="ciudad-photo">Foto sala · Madrid</div>
+          <div class="ciudad-info">
+            <span class="ciudad-name">Madrid</span>
+            <span class="ciudad-date">XX.XX.2026</span>
+            <p class="ciudad-venue">Lugar en el que se va a realizar el evento</p>
+            <a href="https://taller.edithlando.es/entrada-evento-presencial-motivacion-limites-madrid" class="ciudad-cta">Comprar entrada &rsaquo;</a>
+            <p class="ciudad-2x1">¡Vente con una amiga! Entrada 2x1</p>
+          </div>
+        </div>
+
+        <!-- BARCELONA -->
+        <div class="ciudad-card reveal">
+          <!-- Sustituir contenido del div por <img src="foto-sala-barcelona.jpg" alt="Sala Barcelona"> -->
+          <div class="ciudad-photo">Foto sala · Barcelona</div>
+          <div class="ciudad-info">
+            <span class="ciudad-name">Barcelona</span>
+            <span class="ciudad-date">XX.XX.2026</span>
+            <p class="ciudad-venue">Lugar en el que se va a realizar el evento</p>
+            <a href="https://taller.edithlando.es/entrada-evento-presencial-motivacion-limites-barcelona" class="ciudad-cta">Comprar entrada &rsaquo;</a>
+            <p class="ciudad-2x1">¡Vente con una amiga! Entrada 2x1</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE EDITH -->
+  <section class="about">
+    <div class="about-inner">
+
+      <div class="reveal">
+        <h2 class="about-greeting">Hola, soy Edith Lando.</h2>
+        <span class="about-role">Psicopedagoga · Coach · Escritora</span>
+
+        <p class="about-body">Ante todo, yo también soy madre de dos adolescentes. Estoy especializada en educación emocional. Soy consultora, formadora y autora de la trilogía <em>"Deseo que seas feliz"</em>.</p>
+
+        <p class="about-body">Hace <strong>más de 18 años que acompaño a familias</strong> que buscan entender y conectar con sus hijos adolescentes.</p>
+
+        <p class="about-body"><strong>He impactado a más de 5.000 familias</strong>, organizando foros y jornadas educativas, formado a cientos de profesionales y sigo en activo como docente en ESO, Bachillerato y en másteres universitarios.</p>
+
+        <p class="about-body">Además, <strong>soy la creadora del programa "Campus de Madres"</strong> donde acompaño a cientos de madres maravillosas en su viaje de crecimiento, inteligencia emocional y reconexión con sus adolescentes.</p>
+
+        <p class="about-body">Sé lo que es vivir el torbellino de la adolescencia en casa. No solo lo estudio y lo enseño, también lo vivo.</p>
+
+        <p class="about-mission">
+          Cambiar el mundo desde la educación, ayudando a madres a transformar su relación con sus hijos desde el desarrollo personal y la inteligencia emocional.
+        </p>
+
+        <a href="#ciudades" class="btn-primary">Comprar entrada &rsaquo;</a>
+      </div>
+
+      <!-- Sustituir por <img src="foto-edith.jpg" alt="Edith Lando"> dentro del div -->
+      <div class="about-photo reveal">Foto de Edith</div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="cta-final-inner">
+      <p class="cta-final-text reveal">
+        Si ya sabes que este es tu momento,<br>
+        no dejes que se llene tu plaza.
+      </p>
+      <div class="reveal">
+        <a href="#ciudades" class="btn-primary">Comprar entrada &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.el-murcia -->
+
+<script>
+(function() {
+  var reveals = document.querySelectorAll('.el-murcia .reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  document.querySelectorAll('.el-murcia a[href="#ciudades"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById('ciudades');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
