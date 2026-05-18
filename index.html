@@ -962,16 +962,6 @@
 })();
 </script>
 
-<script>
-(function() {
-  function sendHeight() {
-    var h = document.documentElement.scrollHeight;
-    window.parent.postMessage({ elLandingHeight: h }, '*');
-  }
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
-  setInterval(sendHeight, 800);
-})();
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.contentWindow.min.js"></script>
 </body>
 </html>
