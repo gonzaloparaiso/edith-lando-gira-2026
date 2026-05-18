@@ -402,9 +402,9 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      var nombre    = document.getElementById('nombre').value.trim();
-      var email     = document.getElementById('email').value.trim();
-      var telefono  = document.getElementById('telefono').value.trim();
+      var nombre     = document.getElementById('nombre').value.trim();
+      var email      = document.getElementById('email').value.trim();
+      var telefono   = document.getElementById('telefono').value.trim();
       var privacidad = document.getElementById('privacidad').checked;
 
       if (!nombre || !email || !telefono || !privacidad) {
@@ -412,15 +412,34 @@
         return;
       }
 
-      // ↓ Conecta aquí tu webhook (Make, ActiveCampaign, etc.)
-      console.log('Acompañante registrada:', { nombre: nombre, email: email, telefono: telefono });
+      var btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
 
-      form.style.display = 'none';
-      var success = document.getElementById('successState');
-      var msg = document.getElementById('successMsg');
-      var nombreEscapado = nombre.replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      msg.innerHTML = 'Gracias. Hemos recibido los datos de <strong>' + nombreEscapado + '</strong>. Nos vemos muy pronto en Murcia.';
-      success.style.display = 'block';
+      fetch('https://hook.eu1.make.com/3wa4akb53u57s63o1931vvccigjk77m3', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          evento:   'evento-murcia',
+          nombre:   nombre,
+          email:    email,
+          telefono: telefono
+        })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Error ' + res.status);
+        form.style.display = 'none';
+        var success = document.getElementById('successState');
+        var msg = document.getElementById('successMsg');
+        var nombreEscapado = nombre.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        msg.innerHTML = 'Gracias. Hemos recibido los datos de <strong>' + nombreEscapado + '</strong>. Nos vemos muy pronto en Murcia.';
+        success.style.display = 'block';
+      })
+      .catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Enviar datos de mi acompañante';
+        alert('Ha ocurrido un error al enviar. Por favor, inténtalo de nuevo.');
+      });
     });
   })();
   </script>
