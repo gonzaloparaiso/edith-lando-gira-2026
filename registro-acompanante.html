@@ -357,17 +357,31 @@
 
       <!-- FORMULARIO -->
       <div class="form-card" id="formCard">
-        <p class="form-card-title">Datos de tu acompañante</p>
+        <p class="form-card-title">Tus datos</p>
 
         <form id="regForm" novalidate>
           <div class="field">
+            <label for="madre-nombre">Tu nombre y apellidos</label>
+            <input type="text" id="madre-nombre" name="madre-nombre" placeholder="Tu nombre y apellidos" autocomplete="name" required />
+            <span class="field-error" id="err-madre-nombre">Introduce tu nombre y apellidos.</span>
+          </div>
+          <div class="field">
+            <label for="madre-email">Tu correo electrónico</label>
+            <input type="email" id="madre-email" name="madre-email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required />
+            <span class="field-error" id="err-madre-email">Introduce un correo electrónico válido.</span>
+          </div>
+
+          <hr class="form-divider">
+          <p class="form-card-title" style="margin-bottom:20px">Datos de tu acompañante</p>
+
+          <div class="field">
             <label for="nombre">Nombre y apellidos</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos de tu acompañante" autocomplete="name" required />
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos de tu acompañante" autocomplete="off" required />
             <span class="field-error" id="err-nombre">Introduce el nombre y apellidos.</span>
           </div>
           <div class="field">
             <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required />
+            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" autocomplete="off" required />
             <span class="field-error" id="err-email">Introduce un correo electrónico válido.</span>
           </div>
           <div class="field">
@@ -427,27 +441,37 @@
       return isValid;
     }
 
-    ['nombre', 'email', 'telefono'].forEach(function(id) {
-      document.getElementById(id).addEventListener('blur', function() {
+    [
+      ['madre-nombre', 'err-madre-nombre', 'name'],
+      ['madre-email',  'err-madre-email',  'email'],
+      ['nombre',       'err-nombre',       'name'],
+      ['email',        'err-email',        'email'],
+      ['telefono',     'err-telefono',     'phone']
+    ].forEach(function(item) {
+      document.getElementById(item[0]).addEventListener('blur', function() {
         var v = this.value.trim();
-        if (id === 'nombre')   setField('nombre',   'err-nombre',   validName(v));
-        if (id === 'email')    setField('email',    'err-email',    validEmail(v));
-        if (id === 'telefono') setField('telefono', 'err-telefono', validPhone(v));
+        if (item[2] === 'name')  setField(item[0], item[1], validName(v));
+        if (item[2] === 'email') setField(item[0], item[1], validEmail(v));
+        if (item[2] === 'phone') setField(item[0], item[1], validPhone(v));
       });
     });
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      var nombre     = document.getElementById('nombre').value.trim();
-      var email      = document.getElementById('email').value.trim();
-      var telefono   = document.getElementById('telefono').value.trim();
-      var privacidad = document.getElementById('privacidad').checked;
+      var madreNombre = document.getElementById('madre-nombre').value.trim();
+      var madreEmail  = document.getElementById('madre-email').value.trim();
+      var nombre      = document.getElementById('nombre').value.trim();
+      var email       = document.getElementById('email').value.trim();
+      var telefono    = document.getElementById('telefono').value.trim();
+      var privacidad  = document.getElementById('privacidad').checked;
 
       var ok = true;
-      ok = setField('nombre',   'err-nombre',   validName(nombre))   && ok;
-      ok = setField('email',    'err-email',    validEmail(email))    && ok;
-      ok = setField('telefono', 'err-telefono', validPhone(telefono)) && ok;
+      ok = setField('madre-nombre', 'err-madre-nombre', validName(madreNombre))  && ok;
+      ok = setField('madre-email',  'err-madre-email',  validEmail(madreEmail))  && ok;
+      ok = setField('nombre',       'err-nombre',       validName(nombre))       && ok;
+      ok = setField('email',        'err-email',        validEmail(email))       && ok;
+      ok = setField('telefono',     'err-telefono',     validPhone(telefono))    && ok;
 
       if (!ok || !privacidad) {
         if (!privacidad) alert('Acepta la política de privacidad para continuar.');
@@ -462,10 +486,12 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          evento:   'evento-murcia',
-          nombre:   nombre,
-          email:    email,
-          telefono: telefono
+          evento:        'evento-murcia',
+          madre_nombre:  madreNombre,
+          madre_email:   madreEmail,
+          nombre:        nombre,
+          email:         email,
+          telefono:      telefono
         })
       })
       .then(function(res) {
