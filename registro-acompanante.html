@@ -486,12 +486,12 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          evento:        'evento-murcia',
-          madre_nombre:  madreNombre,
-          madre_email:   madreEmail,
-          nombre:        nombre,
-          email:         email,
-          telefono:      telefono
+          evento:                 'evento-murcia',
+          original_nombre:        madreNombre,
+          original_email:         madreEmail,
+          acompanante_nombre:     nombre,
+          acompanante_email:      email,
+          acompanante_telefono:   telefono
         })
       })
       .then(function(res) {
