@@ -439,6 +439,80 @@
     margin: 0 0 40px;
   }
 
+  /* ─── HORARIO ────────────────────────────────────────────────── */
+  .el-murcia .horario {
+    background: var(--burdeos-dk);
+    padding: 72px 24px;
+  }
+
+  .el-murcia .horario-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .el-murcia .horario .section-title { color: var(--blanco); margin-bottom: 48px; }
+
+  .el-murcia .horario-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    text-align: left;
+    position: relative;
+  }
+
+  .el-murcia .horario-list::before {
+    content: '';
+    position: absolute;
+    left: 88px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(221,181,124,0.2);
+  }
+
+  .el-murcia .horario-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .el-murcia .horario-item:last-child { border-bottom: none; }
+
+  .el-murcia .horario-time {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    color: var(--dorado);
+    min-width: 110px;
+    flex-shrink: 0;
+  }
+
+  .el-murcia .horario-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.5;
+  }
+
+  .el-murcia .horario-desc strong { color: var(--blanco); font-weight: 600; }
+
+  .el-murcia .horario-note {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    margin: 28px 0 0;
+    text-align: center;
+  }
+
+  @media (max-width: 500px) {
+    .el-murcia .horario-list::before { display: none; }
+    .el-murcia .horario-item { flex-direction: column; gap: 4px; padding: 14px 0; }
+    .el-murcia .horario-time { min-width: unset; }
+  }
+
   /* ─── CIUDADES ────────────────────────────────────────────────── */
   .el-murcia .ciudades {
     background: var(--beige);
@@ -842,6 +916,37 @@
     </div>
   </section>
 
+  <!-- HORARIO -->
+  <section class="horario">
+    <div class="horario-inner">
+      <span class="section-label reveal" style="color:var(--dorado)">El día del evento</span>
+      <h2 class="section-title reveal">Cómo va a ser el día</h2>
+      <div class="horario-list">
+        <div class="horario-item reveal">
+          <span class="horario-time">9:30</span>
+          <span class="horario-desc">Llegada y acreditación</span>
+        </div>
+        <div class="horario-item reveal">
+          <span class="horario-time">10:00</span>
+          <span class="horario-desc"><strong>Iniciamos</strong></span>
+        </div>
+        <div class="horario-item reveal">
+          <span class="horario-time">13:30 – 15:00</span>
+          <span class="horario-desc">Pausa para comer — tiempo para compartir con otras madres</span>
+        </div>
+        <div class="horario-item reveal">
+          <span class="horario-time">15:00</span>
+          <span class="horario-desc"><strong>Retomamos</strong></span>
+        </div>
+        <div class="horario-item reveal">
+          <span class="horario-time">18:00</span>
+          <span class="horario-desc"><strong>Cierre</strong> · Foto de grupo y firma de libros</span>
+        </div>
+      </div>
+      <p class="horario-note reveal">Habrá pausas breves a media mañana y media tarde.</p>
+    </div>
+  </section>
+
   <!-- ELIGE CIUDAD -->
   <section class="ciudades" id="ciudades">
     <div class="ciudades-inner">
@@ -857,7 +962,7 @@
           <div class="ciudad-info">
             <span class="ciudad-name">Murcia</span>
             <span class="ciudad-date">21 de junio de 2026</span>
-            <p class="ciudad-venue">Lugar en el que se va a realizar el evento</p>
+            <p class="ciudad-venue"><strong>Sercotel Amistad Murcia</strong><br>Calle Condestable, 1, 30009 Murcia</p>
             <a href="https://taller.edithlando.es/entrada-evento-presencial-motivacion-limites-murcia" class="ciudad-cta">Comprar entrada &rsaquo;</a>
             <p class="ciudad-2x1">¡Vente con una amiga! Entrada 2x1</p>
           </div>
@@ -870,7 +975,7 @@
           <div class="ciudad-info">
             <span class="ciudad-name">Madrid</span>
             <span class="ciudad-date">5 de julio de 2026</span>
-            <p class="ciudad-venue">Lugar en el que se va a realizar el evento</p>
+            <p class="ciudad-venue"><strong>Espacio Endor</strong><br>Calle de Ercilla, 46, Local 4, 28005 Madrid</p>
             <a href="https://taller.edithlando.es/entrada-evento-presencial-motivacion-limites-madrid" class="ciudad-cta">Comprar entrada &rsaquo;</a>
             <p class="ciudad-2x1">¡Vente con una amiga! Entrada 2x1</p>
           </div>
@@ -883,7 +988,7 @@
           <div class="ciudad-info">
             <span class="ciudad-name">Barcelona</span>
             <span class="ciudad-date">19 de julio de 2026</span>
-            <p class="ciudad-venue">Lugar en el que se va a realizar el evento</p>
+            <p class="ciudad-venue"><strong>CO Meeting Point</strong><br>Calle Felipe de Paz, 12, Entresuelo 1º, 08028 Barcelona</p>
             <a href="https://taller.edithlando.es/entrada-evento-presencial-motivacion-limites-barcelona" class="ciudad-cta">Comprar entrada &rsaquo;</a>
             <p class="ciudad-2x1">¡Vente con una amiga! Entrada 2x1</p>
           </div>
