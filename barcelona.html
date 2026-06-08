@@ -710,6 +710,27 @@
     font-weight: 600;
   }
 
+  /* Tarjeta única a todo el ancho en escritorio */
+  @media (min-width: 700px) {
+    .el-murcia .ciudad-card--wide {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      align-items: stretch;
+    }
+    .el-murcia .ciudad-card--wide .ciudad-photo {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 380px;
+    }
+    .el-murcia .ciudad-card--wide .ciudad-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 48px;
+    }
+    .el-murcia .ciudad-card--wide .ciudad-name { font-size: 36px; }
+  }
+
   /* ─── SOBRE EDITH ─────────────────────────────────────────────── */
   .el-murcia .about {
     background: var(--burdeos-dk);
@@ -1039,9 +1060,9 @@
       <span class="section-label reveal">Gira 2026</span>
       <h2 class="section-title reveal">Dónde vivirás esta experiencia</h2>
 
-      <div class="ciudades-grid" style="margin-top:48px; max-width:440px; margin-left:auto; margin-right:auto; grid-template-columns:1fr;">
+      <div class="ciudades-grid" style="margin-top:48px; grid-template-columns:1fr;">
 
-        <div class="ciudad-card reveal">
+        <div class="ciudad-card ciudad-card--wide reveal">
           <div class="ciudad-photo"><img src="https://gonzaloparaiso.github.io/edith-lando-gira-2026/bcn.png" alt="CO Meeting Point Barcelona"></div>
           <div class="ciudad-info">
             <span class="ciudad-name">Barcelona</span>
