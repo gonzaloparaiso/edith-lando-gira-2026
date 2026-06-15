@@ -872,7 +872,7 @@
       <strong>¡Entradas 2X1!</strong>
     </p>
     <div class="banner-cta">
-      <div class="countdown" data-deadline="2026-06-14T23:59:59">
+      <div class="countdown" data-cities="2026-06-14T23:59:59|Murcia;2026-06-28T23:59:59|Madrid;2026-07-12T23:59:59|Barcelona">
         <span class="countdown-label">El precio sube en</span>
         <span class="countdown-time">--</span>
       </div>
@@ -1167,18 +1167,28 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(function(el) { observer.observe(el); });
 
-  // Contador "el precio sube en"
+  // Contador "el precio sube en" — salta a la próxima ciudad vigente
   document.querySelectorAll(".el-murcia .countdown").forEach(function(cd) {
-    var deadline = new Date(cd.getAttribute("data-deadline")).getTime();
+    var raw = cd.getAttribute("data-cities") || "";
+    var list = raw.split(";").map(function(x) {
+      var p = x.split("|");
+      return { time: new Date(p[0]).getTime(), city: p[1] || "" };
+    }).filter(function(x) { return x.time; }).sort(function(a, b) { return a.time - b.time; });
+    var labelEl = cd.querySelector(".countdown-label");
     var timeEl = cd.querySelector(".countdown-time");
     var timer;
     function tick() {
-      var diff = deadline - Date.now();
-      if (diff <= 0) {
+      var now = Date.now();
+      var next = null;
+      for (var i = 0; i < list.length; i++) { if (list[i].time > now) { next = list[i]; break; } }
+      if (!next) {
+        if (labelEl) labelEl.textContent = "El precio sube en";
         timeEl.textContent = "¡Última oportunidad!";
         if (timer) clearInterval(timer);
         return;
       }
+      if (labelEl) labelEl.textContent = "El precio sube en · " + next.city;
+      var diff = next.time - now;
       var d = Math.floor(diff / 86400000);
       var h = Math.floor((diff % 86400000) / 3600000);
       var m = Math.floor((diff % 3600000) / 60000);
