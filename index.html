@@ -67,6 +67,44 @@
     .el-murcia .banner-2x1 { flex-direction: column; text-align: center; gap: 14px; padding: 20px 24px; }
   }
 
+  .el-murcia .banner-cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+
+  .el-murcia .countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.1;
+  }
+
+  .el-murcia .countdown-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burdeos);
+    margin-bottom: 3px;
+  }
+
+  .el-murcia .countdown-time {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    color: var(--burdeos-dk);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 600px) {
+    .el-murcia .banner-cta { flex-direction: column; gap: 12px; }
+    .el-murcia .countdown { align-items: center; }
+  }
+
   /* ─── BOTONES ────────────────────────────────────────────────── */
   .el-murcia .btn-primary {
     display: inline-block;
@@ -833,7 +871,13 @@
       Trae a una amiga y vive esta experiencia acompañada.
       <strong>¡Entradas 2X1!</strong>
     </p>
-    <a href="#ciudades" class="btn-dark">Comprar entrada &rsaquo;</a>
+    <div class="banner-cta">
+      <div class="countdown" data-deadline="2026-06-14T23:59:59">
+        <span class="countdown-label">El precio sube en</span>
+        <span class="countdown-time">--</span>
+      </div>
+      <a href="#ciudades" class="btn-dark">Comprar entrada &rsaquo;</a>
+    </div>
   </div>
 
   <!-- HERO -->
@@ -1082,6 +1126,34 @@
 
 </div><!-- /.el-murcia -->
 
+<!-- WhatsApp flotante -->
+<style>
+  .wa-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    z-index: 99999;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 26px rgba(0,0,0,0.32); }
+  .wa-float svg { width: 32px; height: 32px; fill: #fff; }
+  @media (max-width: 600px) {
+    .wa-float { right: 16px; bottom: 16px; width: 54px; height: 54px; }
+    .wa-float svg { width: 30px; height: 30px; }
+  }
+</style>
+<a class="wa-float" href="https://wa.me/34644310915" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.65.86 5.1 2.316 7.094L4 29l7.094-2.316A11.94 11.94 0 0016 27c6.627 0 12-5.373 12-12S22.627 3 16.001 3zm0 21.82c-1.78 0-3.45-.52-4.85-1.42l-.35-.22-4.21 1.38 1.38-4.1-.23-.36A9.78 9.78 0 016.18 15c0-5.42 4.41-9.82 9.82-9.82 5.41 0 9.82 4.4 9.82 9.82 0 5.41-4.41 9.82-9.82 9.82zm5.39-7.35c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.65.15-.19.29-.74.95-.91 1.14-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.59.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.57-.89-2.15-.23-.56-.47-.48-.65-.49l-.55-.01c-.19 0-.51.07-.77.36-.27.29-1.01.99-1.01 2.41s1.04 2.8 1.18 2.99c.15.19 2.04 3.12 4.95 4.37.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.19-.55-.34z"/></svg>
+</a>
+
 <script>
 (function() {
   var reveals = document.querySelectorAll('.el-murcia .reveal');
@@ -1094,6 +1166,28 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(function(el) { observer.observe(el); });
+
+  // Contador "el precio sube en"
+  document.querySelectorAll(".el-murcia .countdown").forEach(function(cd) {
+    var deadline = new Date(cd.getAttribute("data-deadline")).getTime();
+    var timeEl = cd.querySelector(".countdown-time");
+    var timer;
+    function tick() {
+      var diff = deadline - Date.now();
+      if (diff <= 0) {
+        timeEl.textContent = "¡Última oportunidad!";
+        if (timer) clearInterval(timer);
+        return;
+      }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      timeEl.textContent = d + "d " + h + "h " + m + "m " + s + "s";
+    }
+    tick();
+    timer = setInterval(tick, 1000);
+  });
 
   document.querySelectorAll('.el-murcia a[href="#ciudades"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
