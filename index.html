@@ -710,6 +710,55 @@
     font-weight: 600;
   }
 
+  /* ─── CIUDAD DESHABILITADA (evento finalizado) ───────────────── */
+  .el-murcia .ciudad-card--disabled .ciudad-photo { position: relative; }
+
+  .el-murcia .ciudad-card--disabled .ciudad-photo img {
+    filter: grayscale(1);
+    opacity: 0.5;
+  }
+
+  .el-murcia .ciudad-card--disabled:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .el-murcia .ciudad-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    z-index: 1;
+  }
+
+  .el-murcia .ciudad-card--disabled .ciudad-name,
+  .el-murcia .ciudad-card--disabled .ciudad-date,
+  .el-murcia .ciudad-card--disabled .ciudad-venue {
+    opacity: 0.55;
+  }
+
+  .el-murcia .ciudad-cta-disabled {
+    display: block;
+    text-align: center;
+    background: #cbc3bd;
+    color: var(--blanco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    cursor: not-allowed;
+    margin: 0;
+  }
+
   /* ─── SOBRE EDITH ─────────────────────────────────────────────── */
   .el-murcia .about {
     background: var(--burdeos-dk);
@@ -871,13 +920,7 @@
       Trae a una amiga y vive esta experiencia acompañada.
       <strong>¡Entradas 2X1!</strong>
     </p>
-    <div class="banner-cta">
-      <div class="countdown" data-cities="2026-06-14T23:59:59|Murcia;2026-06-28T23:59:59|Madrid;2026-07-12T23:59:59|Barcelona">
-        <span class="countdown-label">El precio sube en</span>
-        <span class="countdown-time">--</span>
-      </div>
-      <a href="#ciudades" class="btn-dark">Comprar entrada &rsaquo;</a>
-    </div>
+    <a href="#ciudades" class="btn-dark">Comprar entrada &rsaquo;</a>
   </div>
 
   <!-- HERO -->
@@ -1041,15 +1084,17 @@
 
       <div class="ciudades-grid" style="margin-top:48px">
 
-        <!-- MURCIA -->
-        <div class="ciudad-card reveal">
-          <div class="ciudad-photo"><img src="https://gonzaloparaiso.github.io/edith-lando-gira-2026/murcia.png" alt="Sercotel Amistad Murcia"></div>
+        <!-- MURCIA (evento finalizado) -->
+        <div class="ciudad-card ciudad-card--disabled reveal">
+          <div class="ciudad-photo">
+            <span class="ciudad-badge">Evento finalizado</span>
+            <img src="https://gonzaloparaiso.github.io/edith-lando-gira-2026/murcia.png" alt="Sercotel Amistad Murcia">
+          </div>
           <div class="ciudad-info">
             <span class="ciudad-name">Murcia</span>
             <span class="ciudad-date">21 de junio de 2026</span>
             <p class="ciudad-venue"><strong>Sercotel Amistad Murcia</strong><br>Calle Condestable, 1, 30009 Murcia</p>
-            <a href="https://taller.edithlando.es/entrada-evento-presencial-motivacion-limites-murcia" class="ciudad-cta">Comprar entrada &rsaquo;</a>
-            <p class="ciudad-2x1">¡Vente con una amiga! Entrada 2x1</p>
+            <span class="ciudad-cta-disabled">Evento finalizado</span>
           </div>
         </div>
 
@@ -1166,38 +1211,6 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(function(el) { observer.observe(el); });
-
-  // Contador "el precio sube en" — salta a la próxima ciudad vigente
-  document.querySelectorAll(".el-murcia .countdown").forEach(function(cd) {
-    var raw = cd.getAttribute("data-cities") || "";
-    var list = raw.split(";").map(function(x) {
-      var p = x.split("|");
-      return { time: new Date(p[0]).getTime(), city: p[1] || "" };
-    }).filter(function(x) { return x.time; }).sort(function(a, b) { return a.time - b.time; });
-    var labelEl = cd.querySelector(".countdown-label");
-    var timeEl = cd.querySelector(".countdown-time");
-    var timer;
-    function tick() {
-      var now = Date.now();
-      var next = null;
-      for (var i = 0; i < list.length; i++) { if (list[i].time > now) { next = list[i]; break; } }
-      if (!next) {
-        if (labelEl) labelEl.textContent = "El precio sube en";
-        timeEl.textContent = "¡Última oportunidad!";
-        if (timer) clearInterval(timer);
-        return;
-      }
-      if (labelEl) labelEl.textContent = "El precio sube en · " + next.city;
-      var diff = next.time - now;
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      var s = Math.floor((diff % 60000) / 1000);
-      timeEl.textContent = d + "d " + h + "h " + m + "m " + s + "s";
-    }
-    tick();
-    timer = setInterval(tick, 1000);
-  });
 
   document.querySelectorAll('.el-murcia a[href="#ciudades"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
